@@ -1,0 +1,17 @@
+type Motorcycle {
+  id: ID!
+  tenLoaiXe: String!
+  giaTheoNgay: Float!
+  soLuong: Int!
+}
+
+type Query {
+  getMotorcycles: [Motorcycle!]!
+  getMotorcycle(id: ID!): Motorcycle
+}
+
+type Mutation {
+  addMotorcycle(tenLoaiXe: String!, giaTheoNgay: Float!, soLuong: Int!): Motorcycle!
+  updateMotorcycle(id: ID!, tenLoaiXe: String, giaTheoNgay: Float, soLuong: Int): Motorcycle!
+  deleteMotorcycle(id: ID!): Motorcycle!
+}
