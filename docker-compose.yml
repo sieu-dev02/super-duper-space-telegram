@@ -1,4 +1,4 @@
-# version: '3.8'
+version: '3.8'
 services:
   mongodb:
     image: mongo:latest
@@ -27,7 +27,7 @@ services:
     depends_on:
       - backend
     environment:
-      - NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
+      - VITE_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
 
 volumes:
   mongo_data:

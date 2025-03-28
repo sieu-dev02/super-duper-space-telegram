@@ -1,17 +1,17 @@
 const Motorcycle = require('./models/Motorcycle');
 
 module.exports = {
-  Query: {  
+  Query: {
     getMotorcycles: async () => await Motorcycle.find({}),
-    getMotorcycle: async (_, { id }) => await Motorcycle.findById(id)
+    getMotorcycle: async (_, { id }) => await Motorcycle.findById(id),
   },
   Mutation: {
-    addMotorcycle: async (_, args) => {
-      const newMotor = new Motorcycle(args);
-      return await newMotor.save();
+    createMotorcycle: async (_, { input }) => {
+      const motorcycle = new Motorcycle(input);
+      return await motorcycle.save();
     },
-    updateMotorcycle: async (_, { id, ...updateData }) => {
-      return await Motorcycle.findByIdAndUpdate(id, updateData, { new: true });
+    updateMotorcycle: async (_, { id, input }) => {
+      return await Motorcycle.findByIdAndUpdate(id, input, { new: true });
     },
     deleteMotorcycle: async (_, { id }) => {
       return await Motorcycle.findByIdAndDelete(id);

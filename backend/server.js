@@ -7,19 +7,22 @@ const resolvers = require('./resolvers');
 
 const typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017/';
+mongoose.set('strictQuery', false);
 
-mongoose.connect(MONGO_URI)
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017/motorcycle';
+
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true,  
-  playground: true      
+  introspection: true,
+  playground: true
 });
 
-server.listen({ port: process.env.PORT || 4000, host: '0.0.0.0' }).then(({ url }) => {
-  console.log(`Server ready at ${url}`);
+server.listen({ port: process.env.PORT || 4000, host: '0.0.0.0' })
+  .then(({ url }) => {
+    console.log(`Server ready at ${url}`);
 });

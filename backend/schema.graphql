@@ -1,17 +1,25 @@
 type Motorcycle {
-  id: ID!
-  tenLoaiXe: String!
-  giaTheoNgay: Float!
-  soLuong: Int!
+  _id: ID!
+  name: String!
+  price: Float!
+  quantity: Int!
+  imageUrl: String!
+}
+
+input MotorcycleInput {
+  name: String!
+  price: Float!
+  quantity: Int!
+  imageUrl: String!
 }
 
 type Query {
-  getMotorcycles: [Motorcycle!]!
+  getMotorcycles: [Motorcycle]
   getMotorcycle(id: ID!): Motorcycle
 }
 
 type Mutation {
-  addMotorcycle(tenLoaiXe: String!, giaTheoNgay: Float!, soLuong: Int!): Motorcycle!
-  updateMotorcycle(id: ID!, tenLoaiXe: String, giaTheoNgay: Float, soLuong: Int): Motorcycle!
-  deleteMotorcycle(id: ID!): Motorcycle!
+  createMotorcycle(input: MotorcycleInput): Motorcycle
+  updateMotorcycle(id: ID!, input: MotorcycleInput): Motorcycle
+  deleteMotorcycle(id: ID!): Motorcycle
 }
