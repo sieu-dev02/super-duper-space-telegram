@@ -8,11 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.5",
+    "graphql": "^16.10.0",
     "next": "13.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@apollo/client": "^3.7.3",
-    "graphql": "^16.6.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
