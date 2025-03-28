@@ -17,6 +17,7 @@ services:
       - mongodb
     environment:
       - MONGO_URI=mongodb://mongodb:27017/motorcycle
+    command: ["node", "server.js"]
 
   frontend:
     build: ./frontend
@@ -25,6 +26,8 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    environment:
+      - NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
 
 volumes:
   mongo_data:
